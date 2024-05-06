@@ -16,7 +16,8 @@ import pytz
 shanghai_tz = pytz.timezone('Asia/Shanghai')
 
 def get_time_prefix():
-    return f"{datetime.now(shanghai_tz).strftime("%Y-%m-%d %H:%M:%S")}: "
+    curr_time = datetime.now(shanghai_tz).strftime('%Y-%m-%d %H:%M:%S')
+    return f"{curr_time}: "
 
 def is_time_between(start_time_str, end_time_str):
     current_time = datetime.now(shanghai_tz).time()
