@@ -1,0 +1,42 @@
+host: 
+admin_path: 
+admin_account: 
+admin_password: 
+nodes:
+  - id: 23
+    type: shadowsocks
+    rate_config:
+    - rate: 1.5
+      start_time: "7:00"
+      end_time: "18:00"
+  - id: 24
+    type: shadowsocks
+    rate_config:
+    - rate: 1.5
+      start_time: "7:00"
+      end_time: "18:00"
+  - id: 25
+    type: shadowsocks
+    rate_config:
+    - rate: 1.5
+      start_time: "7:00"
+      end_time: "18:00"
+  # - id: 1
+  #   type: vmess
+  #   rate_config:
+  #   - rate: 1.1
+  #     start_time: "7:00"
+  #     end_time: "18:00"
+  # - id: 1
+  #   type: trojan
+  #   rate_config:
+  #   - rate: 1.1
+  #     start_time: "7:00"
+  #     end_time: "18:00"
+  # - id: 1
+  #   type: hysteria
+  #   rate_config:
+  #   - rate: 1.1
+  #     start_time: "7:00"
+  #     end_time: "18:00"
+  
