@@ -17,7 +17,7 @@ shanghai_tz = pytz.timezone('Asia/Shanghai')
 
 def get_time_prefix():
     curr_time = datetime.now(shanghai_tz).strftime('%Y-%m-%d %H:%M:%S')
-    return f"{curr_time}: "
+    return curr_time+" "
 
 def is_time_between(start_time_str, end_time_str):
     current_time = datetime.now(shanghai_tz).time()
@@ -66,7 +66,7 @@ class V2BClient:
             "email": self.admin_account,
             "password": self.admin_password
         }
-        res = requests.post(api, data, verify=False)
+        res = requests.post(api, data)
         # print(res.text)
         if res.status_code == 200:
             res = res.json()["data"]
@@ -77,7 +77,8 @@ class V2BClient:
             self.auth_data =  res["auth_data"]
             print(f"{get_time_prefix()}登录成功")
         else:
-            raise Exception(f"{get_time_prefix()}登录请求失败, status_code: {res.status_code} msg: {res.json()["message"]}")
+            time = get_time_prefix()
+            raise Exception(f"{get_time_prefix()}登录请求失败, status_code: {res.status_code} msg: {res.json()['message']}")
     
     def get_nodes(self) -> list:
         self.__has_auth_data()
@@ -86,12 +87,12 @@ class V2BClient:
         headers["authorization"] = self.auth_data
         # print(self.auth_data)
         # print(headers)
-        res = requests.get(api, headers=headers, verify=False)
+        res = requests.get(api, headers=headers)
         if res.status_code == 200:
             print(f"{get_time_prefix()}成功获取节点数据")
             return res.json()["data"]
         else:
-            raise Exception(f"{get_time_prefix()}请求失败api: {api}, status_code: {res.status_code}, msg: {res.json()["message"]}")
+            raise Exception(f"{get_time_prefix()}请求失败api: {api}, status_code: {res.status_code}, msg: {res.json()['message']}")
         
     def batch_change(self, update_nodes_data=[]) -> None:
         self.__has_auth_data()
@@ -106,13 +107,13 @@ class V2BClient:
                 else:
                     post_data[k] = v
             if not post_data["type"]:
-                raise Exception(f"{get_time_prefix()}修改节点ID {post_data["id"]} 时缺少节点类型数据")
-            api = f"https://{self.host}/api/v1/{self.admin_path}/server/{post_data["type"]}/save"
-            res = requests.post(api, headers=headers, data=post_data, verify=False)
+                raise Exception(f"{get_time_prefix()}修改节点ID {post_data['id']} 时缺少节点类型数据")
+            api = f"https://{self.host}/api/v1/{self.admin_path}/server/{post_data['type']}/save"
+            res = requests.post(api, headers=headers, data=post_data)
             if res.status_code == 200:
-                print(f"{get_time_prefix()}修改{post_data["type"]}节点{post_data["id"]} 为 {post_data["rate"]} 倍率 成功。")
+                print(f"{get_time_prefix()}修改{post_data['type']}节点{post_data['id']} 为 {post_data['rate']} 倍率 成功。")
             else:
-                print(f"{get_time_prefix()}修改{post_data["type"]}节点{post_data["id"]} 为 {post_data["rate"]} 倍率 失败。")
+                print(f"{get_time_prefix()}修改{post_data['type']}节点{post_data['id']} 为 {post_data['rate']} 倍率 失败。")
         
 
 class DynamicRate:
