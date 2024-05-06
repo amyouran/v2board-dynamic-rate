@@ -37,7 +37,6 @@
 
 4. 配置并启动 `Linux crontab` 定时任务
 
-需要协助请到[交流群组](https://t.me/zeroThemeGroup)(有很多大佬)
 
 ## 推荐
 
