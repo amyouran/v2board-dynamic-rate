@@ -41,7 +41,7 @@
 ## 推荐
 
 - [简约、优雅的v2board主题](https://github.com/amyouran/V2b-Zero-Theme)
-- [高性能、高负载、部署简单的v2board telegram 机器人](https://github.com/amyouran/v2board-telegram-bot)
+- [高性能、高负载、部署简单的 v2board telegram 机器人](https://github.com/amyouran/v2board-telegram-bot)
 
 ## License
 
