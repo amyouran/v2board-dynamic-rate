@@ -21,7 +21,7 @@
 | admin_password          | 管理员密码                   |
 | nodes          | 节点列表                   |
 | id | 节点id | 
-| type | 节点类型(shadowsocks/vmess/trojan/hysteria ) | 
+| type | 节点类型(shadowsocks/vmess/trojan/hysteria/vless(reality) ) | 
 | rate_config              | 该节点倍率配置列表                           | 
 | rate        | 倍率               | 
 | start_time        | 开始时间(24h)               | 
@@ -42,6 +42,7 @@
 
 - [简约、优雅的v2board主题](https://github.com/amyouran/V2b-Zero-Theme)
 - [高性能、高负载、部署简单的 v2board telegram 机器人](https://github.com/amyouran/v2board-telegram-bot)
+- [龙腾云](https://lty.lol)
 
 ## License
 

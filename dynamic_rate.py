@@ -40,6 +40,7 @@ class V2BClient:
         self.headers = {
             "Host": self.host,
             "Connection": "keep-alive",
+            "Content-Type": "application/x-www-form-urlencoded",
             "Pragma": "no-cache",
             "Cache-Control": "no-cache",
             "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
@@ -101,9 +102,18 @@ class V2BClient:
         for node_data in update_nodes_data:
             post_data = dict()
             for k, v in node_data.items():
-                if k == "group_id":
+                if (k == "group_id" and v != None):
                     for id in v:
                         post_data[f"group_id[{v.index(id)}]"] = id
+                elif (k == "route_id" and v != None):
+                    for id in v:
+                        post_data[f"route_id[{v.index(id)}]"] = id
+                elif (k == "tags" and v != None):
+                    for id in v:
+                        post_data[f"route_id[{v.index(id)}]"] = id
+                elif (k == "tls_settings" and v != None):
+                    for index,id in v.items():
+                        post_data[f"tls_settings[{index}]"] = id
                 else:
                     post_data[k] = v
             if not post_data["type"]:
